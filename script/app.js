@@ -28,23 +28,23 @@ angular.module('LunchCheck', [])
         
         
         if(newarray){
-           inputElm.css('border-color','red');
-                    divElm.css('color', 'red');                    
-                    messageValue ="Please enter valid data. Item(s) not entered."
+            inputElm.css('border-color','red');
+            divElm.css('color', 'red');                    
+            messageValue ="Please enter valid data. Item(s) not entered."
         }
 
-            else 
-                if(array.length >= 1  && array.length <= 3 ){
-                    inputElm.css('border-color','green');
-                    divElm.css('color','green');
-                    messageValue = "Enjoy!";
-            }
-            else if(array.length > 3){
-                    inputElm.css('border-color','green');
-                    divElm.css('color','green');
-                    messageValue = "Too much!" ; 
-                    
-            }
+        else 
+            if(array.length >= 1  && array.length <= 3 ){
+                inputElm.css('border-color','green');
+                divElm.css('color','green');
+                messageValue = "Enjoy!";
+        }
+        else if(array.length > 3){
+                inputElm.css('border-color','green');
+                divElm.css('color','green');
+                messageValue = "Too much!" ; 
+
+        }
         return messageValue;
 };
 
