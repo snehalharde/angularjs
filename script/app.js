@@ -20,37 +20,28 @@ angular.module('LunchCheck', [])
     
    
     function convertToarray (string){
-        var messageValue = "";
+        
         var divElm= angular.element(document.querySelector('.message'));
         var inputElm = angular.element(document.querySelector('#input'));
-        var stringToarray = string.split(",");
-        const result = stringToarray.filter(word => word.length == 0);
-        const result2 = stringToarray.includes("");
-        const str = string.indexOf('');
-        console.log(str);
-        console.log("result2 :" +result2);
-        var arrayLength = stringToarray.length;
-            if(result){
-                console.log("going into undefined")
-                
-                inputElm.css('border-color','red');
-                //messageValue = "t";
+        
+        var messageValue = "";
+        var array = string.split(","); 
+        var newarray = [].concat(array).sort().reverse().pop() === "";
+        
+        
+        if(newarray){
+           inputElm.css('border-color','red');
+                    divElm.css('color', 'red');                    
+                    messageValue ="Please enter valid data. Item(s) not entered."
+        }
 
-           }
-            else
-             if(stringToarray == 0){            
-                    
-                    inputElm.css('border-color','red');
-                    divElm.css('color', 'red');
-                    messageValue = "Please enter data first";
-            }
-            else if(arrayLength >= 1  && arrayLength <= 3 ){
+            else 
+                if(array.length >= 1  && array.length <= 3 ){
                     inputElm.css('border-color','green');
                     divElm.css('color','green');
-
                     messageValue = "Enjoy!";
             }
-            else if(arrayLength > 3){
+            else if(array.length > 3){
                     inputElm.css('border-color','green');
                     divElm.css('color','green');
                     messageValue = "Too much!" ; 
@@ -58,6 +49,6 @@ angular.module('LunchCheck', [])
             }
         return messageValue;
 };
-    
+
 
 })();
