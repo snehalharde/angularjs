@@ -12,8 +12,7 @@ angular.module('LunchCheck', [])
         $scope.message = "";
         $scope.feedback = function(){
 
-            var fb = convertToarray($scope.userInput);
-            
+            var fb = convertToarray($scope.userInput);            
             $scope.message = fb;
         }   
     };
@@ -22,8 +21,7 @@ angular.module('LunchCheck', [])
     function convertToarray (string){
         
         var divElm= angular.element(document.querySelector('.message'));
-        var inputElm = angular.element(document.querySelector('#input'));
-        
+        var inputElm = angular.element(document.querySelector('#input'));        
         var messageValue = "";
         var array = string.split(","); 
         var newarray = [].concat(array).sort().reverse().pop() === "";
