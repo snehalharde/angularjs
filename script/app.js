@@ -15,10 +15,6 @@ angular.module('LunchCheck', [])
             var fb = convertToarray($scope.userInput);            
             $scope.message = fb;
         };
-        $scope.myFunc = function(){
-            
-            
-        }
         
     };
     
@@ -29,31 +25,28 @@ angular.module('LunchCheck', [])
         var inputElm = angular.element(document.querySelector('#input'));        
         var messageValue = "";
         var array = string.split(","); 
-        console.log(array);
-        var newarray = [].concat(array).sort().reverse().pop() === "";
+        var newarray = [].concat(array).sort().reverse().pop();
         
-        if(!Boolean(string)){
-            inputElm.css('border-color','red');
-            messageValue ="Please enter valid data. Item(s) not entered.";
-        }else
-        if(newarray){
-            inputElm.css('border-color','red');
-            divElm.css('color', 'red');                    
-            messageValue ="Item(s) not entered."
-        }
+                if(!Boolean(string)){
+                    inputElm.css('border-color','red');
+                    divElm.css('color','red');
+                    messageValue ="Please enter data first.";
+                }
+                else if(newarray === ""){
 
-        else 
-            if(array.length >= 1  && array.length <= 3 ){
-                inputElm.css('border-color','green');
-                divElm.css('color','green');
-                messageValue = "Enjoy!";
-        }
-        else if(array.length > 3){
-                inputElm.css('border-color','green');
-                divElm.css('color','green');
-                messageValue = "Too much!" ; 
+                    messageValue ="Empty Item(s) NOT considered towards count."
+                }
+                else if(array.length >= 1  && array.length <= 3 ){
+                        inputElm.css('border-color','green');
+                        divElm.css('color','green');
+                        messageValue = "Enjoy!";
+                }
+                else if(array.length > 3){
+                        inputElm.css('border-color','green');
+                        divElm.css('color','green');
+                        messageValue = "Too much!" ; 
 
-        }
+                }
         return messageValue;
         
 };
