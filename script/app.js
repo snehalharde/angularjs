@@ -14,7 +14,12 @@ angular.module('LunchCheck', [])
 
             var fb = convertToarray($scope.userInput);            
             $scope.message = fb;
-        }   
+        };
+        $scope.myFunc = function(){
+            
+            
+        }
+        
     };
     
    
@@ -24,13 +29,17 @@ angular.module('LunchCheck', [])
         var inputElm = angular.element(document.querySelector('#input'));        
         var messageValue = "";
         var array = string.split(","); 
+        console.log(array);
         var newarray = [].concat(array).sort().reverse().pop() === "";
         
-        
+        if(!Boolean(string)){
+            inputElm.css('border-color','red');
+            messageValue ="Please enter valid data. Item(s) not entered.";
+        }else
         if(newarray){
             inputElm.css('border-color','red');
             divElm.css('color', 'red');                    
-            messageValue ="Please enter valid data. Item(s) not entered."
+            messageValue ="Item(s) not entered."
         }
 
         else 
@@ -46,6 +55,7 @@ angular.module('LunchCheck', [])
 
         }
         return messageValue;
+        
 };
 
 
